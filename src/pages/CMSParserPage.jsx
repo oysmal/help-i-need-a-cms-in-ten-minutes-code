@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { MyChart } from "./common/chart/Chart";
-import { Page } from "./common/page/Page";
+import { Chart } from "../common/chart/Chart";
+import { Page } from "../common/page/Page";
 
 const CMSComponentMap = {
   H1: createH1,
@@ -17,10 +17,13 @@ export function CMSParserPage(props) {
   const [cmsData, setCMSData] = useState([]);
 
   useEffect(() => {
-    fetch(`https:booster-test.vercel.app/${url}.json`).then(async (res) => {
+    async () => {
+      const res = await fetch(
+        `https://help-i-need-a-cms-in-ten-minutes.vercel.app/${url}.json`,
+      );
       const data = await res.json();
       setCMSData(data);
-    });
+    };
   }, []);
 
   return <Page>{cmsData.map(parseCMSItem)}</Page>;
@@ -49,5 +52,5 @@ function createSpacer(item) {
   return <div className="w-full h-8" />;
 }
 function createChart(item) {
-  return <MyChart item={item} />;
+  return <Chart item={item} />;
 }

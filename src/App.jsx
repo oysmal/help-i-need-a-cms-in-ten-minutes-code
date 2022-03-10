@@ -6,9 +6,10 @@ export default function App() {
   const [cmsData, setCMSData] = useState([]);
 
   useEffect(() => {
-    fetch(`https:booster-test.vercel.app/Pages.json`).then(async (res) => {
+    fetch(
+      `https://help-i-need-a-cms-in-ten-minutes.vercel.app/Pages.json`,
+    ).then(async (res) => {
       const data = await res.json();
-      console.log(data);
       setCMSData(data);
     });
   }, []);
