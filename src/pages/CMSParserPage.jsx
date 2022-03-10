@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import { Chart } from "../common/chart/Chart";
 import { Page } from "../common/page/Page";
 
@@ -17,16 +17,23 @@ export function CMSParserPage(props) {
   const [cmsData, setCMSData] = useState([]);
 
   useEffect(() => {
-    async () => {
+    const fn = async () => {
       const res = await fetch(
         `https://help-i-need-a-cms-in-ten-minutes.vercel.app/${url}.json`,
       );
       const data = await res.json();
       setCMSData(data);
     };
+    fn();
   }, []);
 
-  return <Page>{cmsData.map(parseCMSItem)}</Page>;
+  return (
+    <Page>
+      {cmsData.map((item, i) => (
+        <Fragment key={i}>{parseCMSItem(item)}</Fragment>
+      ))}
+    </Page>
+  );
 }
 
 function parseCMSItem(item) {

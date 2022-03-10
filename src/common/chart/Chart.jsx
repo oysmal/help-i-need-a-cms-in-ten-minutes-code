@@ -12,12 +12,9 @@ export function Chart(props) {
       `https://help-i-need-a-cms-in-ten-minutes.vercel.app/${item.Link}.json`,
     ).then(async (res) => {
       const data = await res.json();
-      console.log(data);
       setDataset(data);
     });
   }, []);
-
-  console.log(dataset);
 
   return dataset.length > 0 ? (
     <ReactChartJS
@@ -29,6 +26,8 @@ export function Chart(props) {
             id: 1,
             label: item.Content,
             data: dataset.map((x) => x.Value),
+            borderColor: "rgb(53, 162, 235)",
+            backgroundColor: "rgba(53, 162, 235, 0.9)",
           },
         ],
       }}
