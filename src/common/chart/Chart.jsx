@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Chart as ChartJS } from "chart.js/auto";
-import { Line, Chart, Bar } from "react-chartjs-2";
+import { Chart } from "react-chartjs-2";
 
 export function MyChart(props) {
   const { item } = props;
@@ -34,13 +34,4 @@ export function MyChart(props) {
       }}
     />
   ) : null;
-}
-
-function getChartType(type) {
-  switch (type) {
-    case "Line":
-      return Line;
-    default:
-      return Bar;
-  }
 }
