@@ -10,6 +10,7 @@ const CMSComponentMap = {
   Image: createImage,
   Chart: createChart,
   Spacer: createSpacer,
+  Pre: createPre,
 };
 
 export function CMSParserPage(props) {
@@ -50,6 +51,14 @@ function createH2(item) {
 
 function createH3(item) {
   return <h3 className="text-xl my-2">{item.Content}</h3>;
+}
+
+function createPre(item) {
+  return (
+    <pre className="font-mono my-2 p-3 border-2 border-color-slate-50 overflow-x-auto max-w-full">
+      {item.Content}
+    </pre>
+  );
 }
 
 function createParagraph(item) {
